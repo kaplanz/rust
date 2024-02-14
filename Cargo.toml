@@ -1,8 +1,26 @@
 [package]
 name = "app"
 version = "0.1.0"
+authors = { workspace = true }
 edition = "2021"
+repository = { workspace = true }
+license = { workspace = true }
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[workspace.package]
+authors = ["Zakhary Kaplan <me@zakhary.dev>"]
+repository = "https://github.com/kaplanz/todo"
+license = "MIT OR Apache-2.0"
+
 [dependencies]
+advise = "0.1.0"
+anyhow = "1.0.79"
+clap = { version = "4.5.0", features = ["cargo", "derive", "env", "wrap_help"] }
+env_logger = "0.11.2"
+log = "0.4.20"
+serde = { version = "1.0.196", features = ["derive"] }
+sysexits = "0.7.11"
+thiserror = "1.0.57"
+toml = "0.8.10"
+xdir = "0.1.0"
