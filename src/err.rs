@@ -7,7 +7,6 @@ use thiserror::Error;
 use crate::cfg;
 
 /// A convenient type alias for application errors.
-#[allow(unused)]
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 /// A top-level error caused within the application.
@@ -17,9 +16,10 @@ pub enum Error {
     /// Configuration errors.
     #[error(transparent)]
     Config(#[from] cfg::Error),
-    // /// TODO: Handle more errors.
-    // #[error("some error message")]
-    // Todo(#[from] some::Error),
+    /// TODO: Report custom errors.
+    #[cfg(feature = "todo")]
+    #[error("some error message")]
+    Todo(#[from] some::Error),
     /// Catchall error variant.
     #[error(transparent)]
     Other(#[from] anyhow::Error),
@@ -29,7 +29,8 @@ impl From<Error> for ExitCode {
     fn from(err: Error) -> Self {
         match err {
             Error::Config(_) => sysexits::ExitCode::Config.into(),
-            // Error::Todo(_) => todo!() // TODO: handle more variants...
+            #[cfg(feature = "todo")]
+            Error::Todo(_) => todo!(), // TODO: handle more variants...
             _ => ExitCode::FAILURE,
         }
     }
