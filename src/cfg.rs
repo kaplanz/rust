@@ -68,8 +68,10 @@ pub type Result<T, E = Error> = std::result::Result<T, E>;
 /// An error caused by [loading][`Config::load`] configuration.
 #[derive(Debug, Error)]
 pub enum Error {
-    #[error("failed to read config")]
+    /// Reading error.
+    #[error("reading configuration failed")]
     Read(#[from] io::Error),
-    #[error("failed to parse config")]
+    /// Parsing error.
+    #[error("parsing configuration failed")]
     Parse(#[from] toml::de::Error),
 }

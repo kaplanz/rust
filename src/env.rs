@@ -1,4 +1,4 @@
 //! Environment variables.
 
 /// Configuration file.
-pub const CFG: &str = "APP_CFG";
+pub const CFG: &str = "APP_CONF";

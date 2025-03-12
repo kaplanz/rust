@@ -1,6 +1,6 @@
 #![warn(clippy::pedantic)]
 
-use clap::{crate_name as name, Parser};
+use clap::{Parser, crate_name as name};
 use log::trace;
 
 use crate::cli::Cli;
