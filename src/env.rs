@@ -1,7 +1,7 @@
 //! Environment variables.
 
 /// Environment prefix.
-const PREFIX: &str = "APP";
+const PREFIX: &str = "TOOL";
 
 /// Configuration file.
 pub const CFG: &str = constcat::concat!(PREFIX, "_CFG");
